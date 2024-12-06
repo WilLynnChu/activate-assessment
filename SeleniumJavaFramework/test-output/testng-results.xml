@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="5" passed="4" failed="1" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-12-06T20:22:53 MYT" name="Regression Suite" finished-at="2024-12-06T20:23:03 MYT" duration-ms="10263">
+    <groups>
+    </groups>
+    <test started-at="2024-12-06T20:22:53 MYT" name="Regression Test" finished-at="2024-12-06T20:23:03 MYT" duration-ms="10263">
+      <class name="testCases.US1TC2Booking">
+        <test-method is-config="true" signature="testSetUp()[pri:0, instance:testCases.US1TC2Booking@70325e14]" started-at="2024-12-06T20:22:53 MYT" name="testSetUp" finished-at="2024-12-06T20:22:53 MYT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSetUp -->
+        <test-method signature="US1TC2testWithCsvData(java.lang.String,org.apache.commons.csv.CSVRecord)[pri:0, instance:testCases.US1TC2Booking@70325e14]" started-at="2024-12-06T20:23:00 MYT" name="US1TC2testWithCsvData" data-provider="csvDataProvider" finished-at="2024-12-06T20:23:02 MYT" duration-ms="2146" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Test Case 1 - Positive - Update Booking]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[CSVRecord [comment='null', recordNumber=1, values=[Test Case 1 - Positive - Update Booking, Activate, QA Team, Breakfast, 2024-04-03, 2024-05-01, 111, true]]]]>
+              </value>
+            </param>
+          </params>
+          <exception class="io.restassured.module.jsv.JsonSchemaValidationException">
+            <message>
+              <![CDATA[com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'java': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 5]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.restassured.module.jsv.JsonSchemaValidationException: com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'java': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 5]
+at io.restassured.module.jsv.JsonSchemaValidator.matchesSafely(JsonSchemaValidator.java:233)
+at io.restassured.module.jsv.JsonSchemaValidator.matchesSafely(JsonSchemaValidator.java:75)
+at org.hamcrest.TypeSafeMatcher.matches(TypeSafeMatcher.java:65)
+at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:12)
+at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:8)
+at keywords.GenericKeywords.validateJsonSchema(GenericKeywords.java:81)
+at testCases.US1TC2Booking.US1TC2testWithCsvData(US1TC2Booking.java:61)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+Caused by: com.fasterxml.jackson.core.JsonParseException: Unrecognized token 'java': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 5]
+at com.fasterxml.jackson.core.JsonParser._constructError(JsonParser.java:2584)
+at com.fasterxml.jackson.core.JsonParser._constructReadException(JsonParser.java:2610)
+at com.fasterxml.jackson.core.JsonParser._constructReadException(JsonParser.java:2618)
+at com.fasterxml.jackson.core.base.ParserMinimalBase._reportError(ParserMinimalBase.java:825)
+at com.fasterxml.jackson.core.json.ReaderBasedJsonParser._reportInvalidToken(ReaderBasedJsonParser.java:3017)
+at com.fasterxml.jackson.core.json.ReaderBasedJsonParser._handleOddValue(ReaderBasedJsonParser.java:2051)
+at com.fasterxml.jackson.core.json.ReaderBasedJsonParser.nextToken(ReaderBasedJsonParser.java:780)
+at com.fasterxml.jackson.databind.MappingIterator.hasNextValue(MappingIterator.java:246)
+at com.github.fge.jackson.JsonNodeReader.readNode(JsonNodeReader.java:149)
+at com.github.fge.jackson.JsonNodeReader.fromReader(JsonNodeReader.java:129)
+at com.github.fge.jackson.JsonLoader.fromReader(JsonLoader.java:186)
+at com.github.fge.jackson.JsonLoader.fromString(JsonLoader.java:199)
+at io.restassured.module.jsv.JsonSchemaValidator.matchesSafely(JsonSchemaValidator.java:214)
+... 32 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.restassured.module.jsv.JsonSchemaValidationException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- US1TC2testWithCsvData -->
+      </class> <!-- testCases.US1TC2Booking -->
+      <class name="testCases.US2Login">
+        <test-method is-config="true" signature="testSetUp()[pri:0, instance:testCases.US2Login@37ceb1df]" started-at="2024-12-06T20:22:53 MYT" name="testSetUp" finished-at="2024-12-06T20:22:56 MYT" duration-ms="2652" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSetUp -->
+        <test-method signature="US2testCase1()[pri:0, instance:testCases.US2Login@37ceb1df]" started-at="2024-12-06T20:23:02 MYT" name="US2testCase1" description="Test Case 1 - Login As Standard User - Positive" finished-at="2024-12-06T20:23:03 MYT" duration-ms="539" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- US2testCase1 -->
+        <test-method is-config="true" signature="testTearDown()[pri:0, instance:testCases.US2Login@37ceb1df]" started-at="2024-12-06T20:23:03 MYT" name="testTearDown" finished-at="2024-12-06T20:23:03 MYT" duration-ms="162" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testTearDown -->
+      </class> <!-- testCases.US2Login -->
+      <class name="testCases.US1TC1Auth">
+        <test-method is-config="true" signature="testSetUp()[pri:0, instance:testCases.US1TC1Auth@7bedc48a]" started-at="2024-12-06T20:22:53 MYT" name="testSetUp" finished-at="2024-12-06T20:22:53 MYT" duration-ms="11" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSetUp -->
+        <test-method signature="US1testWithCsvData(java.lang.String,org.apache.commons.csv.CSVRecord)[pri:0, instance:testCases.US1TC1Auth@7bedc48a]" started-at="2024-12-06T20:22:57 MYT" name="US1testWithCsvData" data-provider="csvDataProvider" finished-at="2024-12-06T20:22:59 MYT" duration-ms="1516" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Positive Credential]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[CSVRecord [comment='null', recordNumber=1, values=[Positive Credential, Admin, admin, password123]]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- US1testWithCsvData -->
+        <test-method signature="US1testWithCsvData(java.lang.String,org.apache.commons.csv.CSVRecord)[pri:0, instance:testCases.US1TC1Auth@7bedc48a]" started-at="2024-12-06T20:22:59 MYT" name="US1testWithCsvData" data-provider="csvDataProvider" finished-at="2024-12-06T20:23:00 MYT" duration-ms="1104" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Negative Credential]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[CSVRecord [comment='null', recordNumber=2, values=[Negative Credential, Invalid, admin, pass123]]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- US1testWithCsvData -->
+      </class> <!-- testCases.US1TC1Auth -->
+      <class name="testCases.US3Product">
+        <test-method is-config="true" signature="testSetUp()[pri:0, instance:testCases.US3Product@3d34d211]" started-at="2024-12-06T20:22:56 MYT" name="testSetUp" finished-at="2024-12-06T20:22:57 MYT" duration-ms="1416" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSetUp -->
+        <test-method signature="US2testCase1()[pri:0, instance:testCases.US3Product@3d34d211]" started-at="2024-12-06T20:23:03 MYT" name="US2testCase1" description="Test Case 1 - Add Item To Cart And Assert Results - Positive" finished-at="2024-12-06T20:23:03 MYT" duration-ms="530" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- US2testCase1 -->
+        <test-method is-config="true" signature="testTearDown()[pri:0, instance:testCases.US3Product@3d34d211]" started-at="2024-12-06T20:23:03 MYT" name="testTearDown" finished-at="2024-12-06T20:23:03 MYT" duration-ms="133" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testTearDown -->
+      </class> <!-- testCases.US3Product -->
+    </test> <!-- Regression Test -->
+  </suite> <!-- Regression Suite -->
+</testng-results>

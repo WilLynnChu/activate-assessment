@@ -1,0 +1,90 @@
+package keywords;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNull;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import objectRepository.APIObject;
+import objectRepository.LoginObject;
+
+public class Booking{
+    
+    public static String updateBooking(String token, String firstname, String lastname, String additionalneeds, String checkin, String checkout, String totalprice, String depositpaid) {
+    	Map<String, String> api_request_payload = SQLHelper.createSQLDictionary();
+    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "firstname", firstname);
+    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "lastname", lastname);
+    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "additionalneeds", additionalneeds);
+    	Map<String, String> bookingdates = SQLHelper.createSQLDictionary();
+    	bookingdates = SQLHelper.addToSQLDictionary(bookingdates, "checkin", checkin);
+    	bookingdates = SQLHelper.addToSQLDictionary(bookingdates, "checkout", checkout);
+    	String bookingdates_string = APIHelper.convertDictToJsonString(api_request_payload);
+    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "bookingdates", bookingdates_string);
+    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "totalprice", totalprice);
+    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "depositpaid", depositpaid);
+    	String json_payload_string = APIHelper.convertDictToJsonString(api_request_payload);
+    	String requestBody = APIHelper.putAPI(APIObject.update_booking_api, json_payload_string, token, "200");
+    	return requestBody;
+    }
+//    
+//    public static String createHeroWithVoucherAPI(String natid, String name, String gender, String birthDate, String deathDate, String salary, String taxPaid, String browniePoints,String voucherName, String voucherType, String expectedStatus) {
+//    	Map<String, String> voucher_dict = SQLHelper.createSQLDictionary();
+//    	voucher_dict = SQLHelper.addToSQLDictionary(voucher_dict, "voucherName", voucherName);
+//    	voucher_dict = SQLHelper.addToSQLDictionary(voucher_dict, "voucherType", voucherType);
+//    	String voucher_dict_string = APIHelper.convertDictToJsonString(voucher_dict);
+//    	List<String> voucher_list_string = new ArrayList<>();
+//    	voucher_list_string.add(voucher_dict_string);
+//    	Map<String, String> api_request_payload = SQLHelper.createSQLDictionary();
+//    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "natid", natid);
+//    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "name", name);
+//    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "gender", gender);
+//    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "birthDate", birthDate);
+//    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "deathDate", deathDate);
+//    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "salary", salary);
+//    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "taxPaid", taxPaid);
+//    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "browniePoints", browniePoints);
+//    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "vouchers", voucher_list_string.toString());
+//    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "expectedStatus", expectedStatus);
+//    	String json_payload_string = APIHelper.convertDictToJsonString(api_request_payload);
+//    	String requestBody = APIHelper.postAPI(APIObject.create_hero_voucher_api, json_payload_string, expectedStatus);
+//    	return requestBody;
+//    }
+    
+    public static void validateResponse(String responseBody, String role) {
+    	String key = "";
+    	String message = "";
+    	if (role.equals("Invalid")) {
+    		key = "reason";
+    		String expectedMsg = "Bad credentials";
+        	message = APIHelper.extractResponseBodyByKey(responseBody, key);
+      	    System.out.println("Expected Message: " + expectedMsg);
+      	    System.out.println("Actual Message: " + message);
+      	    assertEquals(message, expectedMsg);
+    	} else {
+    		key = "token";
+        	message = APIHelper.extractResponseBodyByKey(responseBody, key);
+    	}
+	}
+    
+    public static String getAuthToken(String filepath) {
+    	String token;
+    	Map<String, String> credentials = CSVReader.getCredentials("Admin", filepath);
+    	String response = authAPI(credentials.get("username"), credentials.get("password"));
+    	token = APIHelper.extractResponseBodyByKey(response, "token");
+		return token;
+    }
+    
+//    
+//    public static String getHeroOweMoneyAPI(String natid, String expectedStatus) {
+//    	String queryParams = natid.replace("natid-", "natid=");
+//    	String requestBody = APIHelper.getAPI(APIObject.get_hero_owe_money_api+ "?" + queryParams, expectedStatus);
+//    	return requestBody;
+//    }
+}

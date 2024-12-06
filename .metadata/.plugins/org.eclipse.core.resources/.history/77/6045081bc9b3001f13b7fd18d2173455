@@ -1,0 +1,27 @@
+package keywords;
+
+import org.openqa.selenium.WebDriver;
+
+import java.util.List;
+import java.util.Map;
+import objectRepository.ProductObject;
+
+public class Product extends ProductObject{
+
+    public static void verifyItemInProductPage(WebDriver driver, String data_file_path) {
+        
+        // Get credentials for the specified role
+		List<String[]> item_list = CSVReader.readCsvFileToList(data_file_path);
+		System.out.println("\n\n\nItem List:\n" + item_list.get(0) + "\n\n\n");
+//		if (!credentials.isEmpty()) {
+//		    if (lbl_header_login(driver).isDisplayed()) {
+//		        input_username_login(driver).sendKeys(credentials.get("username"));
+//		        input_password_login(driver).sendKeys(credentials.get("password"));
+//		        btn_login_login(driver).click();
+//		    }
+//		    lbl_verify_header_successful_login(driver).isDisplayed();
+//		} else {
+//		    System.out.println("Credentials not found for the specified role.");
+//		}
+    }
+}

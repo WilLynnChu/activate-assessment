@@ -1,0 +1,10 @@
+<suite name="Regression Suite" verbose="10">
+  <test thread-count="5" name="Regression Test">
+    <classes>
+      <class name="testCases.US1TC1Auth"/>
+      <class name="testCases.US1TC2Booking"/>
+      <class name="testCases.US2Login"/>
+      <class name="testCases.US3Product"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

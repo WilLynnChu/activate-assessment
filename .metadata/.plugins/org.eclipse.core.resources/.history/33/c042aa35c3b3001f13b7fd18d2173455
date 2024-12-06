@@ -1,0 +1,36 @@
+package keywords;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNull;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import objectRepository.APIObject;
+import objectRepository.LoginObject;
+
+public class Booking{
+    
+    public static String updateBooking(String token, String firstname, String lastname, String additionalneeds, String checkin, String checkout, String totalprice, String depositpaid) {
+    	Map<String, String> api_request_payload = SQLHelper.createSQLDictionary();
+    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "firstname", firstname);
+    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "lastname", lastname);
+    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "additionalneeds", additionalneeds);
+    	Map<String, String> bookingdates = SQLHelper.createSQLDictionary();
+    	bookingdates = SQLHelper.addToSQLDictionary(bookingdates, "checkin", checkin);
+    	bookingdates = SQLHelper.addToSQLDictionary(bookingdates, "checkout", checkout);
+    	String bookingdates_string = APIHelper.convertDictToJsonString(bookingdates);
+    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "bookingdates", bookingdates_string);
+    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "totalprice", totalprice);
+    	api_request_payload = SQLHelper.addToSQLDictionary(api_request_payload, "depositpaid", depositpaid);
+    	String json_payload_string = APIHelper.convertDictToJsonString(api_request_payload);
+    	String requestBody = APIHelper.putAPI(APIObject.update_booking_api + "/1", json_payload_string, token, null);
+    	return requestBody;
+    }
+}
